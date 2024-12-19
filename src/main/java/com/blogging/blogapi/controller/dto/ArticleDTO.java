@@ -1,13 +1,52 @@
 package com.blogging.blogapi.controller.dto;
 
-import lombok.Data;
-
 import java.util.Date;
 
-@Data
 public class ArticleDTO {
     private String title;
     private String content;
     private String authorName;
     private Date publishDate;
+
+    public ArticleDTO() {
+    }
+
+    public ArticleDTO(String title, String content, String authorName, Date publishDate) {
+        this.title = title;
+        this.content = content;
+        this.authorName = authorName;
+        this.publishDate = publishDate;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
+
+    public String getAuthorName() {
+        return authorName;
+    }
+
+    public void setAuthorName(String authorName) {
+        this.authorName = authorName;
+    }
+
+    public Date getPublishDate() {
+        return publishDate;
+    }
+
+    public void setPublishDate(Date publishDate) {
+        this.publishDate = publishDate;
+    }
 }
