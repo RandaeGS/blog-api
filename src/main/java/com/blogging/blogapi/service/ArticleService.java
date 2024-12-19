@@ -9,11 +9,18 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ArticleService {
 
     @Autowired
     private ArticleRepository articleRepository;
+
+    public ResponseEntity<?> listArticles(){
+        List<Article> articleList = articleRepository.findAll();
+        return new ResponseEntity<>(articleList,HttpStatus.OK);
+    }
 
     @Transactional
     public ResponseEntity<?> saveArticle(ArticleDTO articleDTO){
