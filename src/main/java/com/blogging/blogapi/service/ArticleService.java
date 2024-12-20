@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ArticleService {
@@ -20,6 +21,15 @@ public class ArticleService {
     public ResponseEntity<?> listArticles(){
         List<Article> articleList = articleRepository.findAll();
         return new ResponseEntity<>(articleList,HttpStatus.OK);
+    }
+
+    public ResponseEntity<?> getArticle(Long id){
+        Optional<Article> articleOptional = articleRepository.findById(id);
+        if (articleOptional.isEmpty()) {
+            return new ResponseEntity<>("Article not found", HttpStatus.NOT_FOUND);
+        }
+
+        return new ResponseEntity<>(articleOptional.get(), HttpStatus.FOUND);
     }
 
     @Transactional
