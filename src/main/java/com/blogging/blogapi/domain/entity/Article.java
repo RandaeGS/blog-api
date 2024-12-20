@@ -5,7 +5,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Entity
 public class Article {
@@ -15,17 +15,18 @@ public class Article {
     private String title;
     private String content;
     private String authorName;
-    private Date publishDate;
+    private LocalDateTime publishDate;
 
     public Article() {
+        this.publishDate = LocalDateTime.now();
     }
 
-    public Article(Long id, String title, String content, String authorName, Date publishDate) {
+    public Article(Long id, String title, String content, String authorName) {
         this.id = id;
         this.title = title;
         this.content = content;
         this.authorName = authorName;
-        this.publishDate = publishDate;
+        this.publishDate = LocalDateTime.now();
     }
 
     public Long getId() {
@@ -60,11 +61,11 @@ public class Article {
         this.authorName = authorName;
     }
 
-    public Date getPublishDate() {
+    public LocalDateTime getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(Date publishDate) {
+    public void setPublishDate(LocalDateTime publishDate) {
         this.publishDate = publishDate;
     }
 }

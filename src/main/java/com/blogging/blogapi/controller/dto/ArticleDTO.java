@@ -1,21 +1,22 @@
 package com.blogging.blogapi.controller.dto;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 public class ArticleDTO {
     private String title;
     private String content;
     private String authorName;
-    private Date publishDate;
+    private LocalDateTime publishDate;
 
     public ArticleDTO() {
     }
 
-    public ArticleDTO(String title, String content, String authorName, Date publishDate) {
+    public ArticleDTO(String title, String content, String authorName) {
         this.title = title;
         this.content = content;
         this.authorName = authorName;
-        this.publishDate = publishDate;
+        this.publishDate = LocalDateTime.now();
     }
 
     public String getTitle() {
@@ -42,11 +43,11 @@ public class ArticleDTO {
         this.authorName = authorName;
     }
 
-    public Date getPublishDate() {
+    public LocalDateTime getPublishDate() {
         return publishDate;
     }
 
-    public void setPublishDate(Date publishDate) {
+    public void setPublishDate(LocalDateTime publishDate) {
         this.publishDate = publishDate;
     }
 }
