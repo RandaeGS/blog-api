@@ -27,4 +27,9 @@ public class ArticleController {
     public ResponseEntity<?> saveArticle(@RequestBody ArticleDTO articleDTO){
         return articleService.saveArticle(articleDTO);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteArticle(@PathVariable("id") Long articleId){
+        return articleService.deleteArticle(articleId);
+    }
 }

@@ -42,4 +42,14 @@ public class ArticleService {
         articleRepository.save(article);
         return new ResponseEntity<>("Article sucessfully created!", HttpStatus.CREATED);
     }
+
+    @Transactional
+    public ResponseEntity<?> deleteArticle(Long id){
+        Optional<Article> articleOptional = articleRepository.findById(id);
+        if (articleOptional.isEmpty()) {
+            return new ResponseEntity<>("Article not found", HttpStatus.NOT_FOUND);
+        }
+        articleRepository.delete(articleOptional.get());
+        return new ResponseEntity<>("Article successfully deleted!", HttpStatus.OK);
+    }
 }
