@@ -52,4 +52,15 @@ public class ArticleService {
         articleRepository.delete(articleOptional.get());
         return new ResponseEntity<>("Article successfully deleted!", HttpStatus.OK);
     }
+
+    @Transactional
+    public ResponseEntity<?> updateArticle(Long id, String content){
+        Optional<Article> articleOptional = articleRepository.findById(id);
+        if (articleOptional.isEmpty()) {
+            return new ResponseEntity<>("Article not found", HttpStatus.NOT_FOUND);
+        }
+        Article article = articleOptional.get();
+        article.setContent(content);
+        return new ResponseEntity<>("Article succesfully updated!", HttpStatus.OK);
+    }
 }

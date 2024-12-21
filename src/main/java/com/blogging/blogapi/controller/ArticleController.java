@@ -32,4 +32,9 @@ public class ArticleController {
     public ResponseEntity<?> deleteArticle(@PathVariable("id") Long articleId){
         return articleService.deleteArticle(articleId);
     }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateArticle(@PathVariable("id") Long articleId, @RequestBody String newContent){
+        return articleService.updateArticle(articleId, newContent);
+    }
 }
